@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-string test = "wtf";        
+string test = "well hello again";        
 
 int main() {
     cout << test;
