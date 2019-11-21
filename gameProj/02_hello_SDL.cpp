@@ -4,10 +4,13 @@ and may not be redistributed without written permission.*/
 //Using SDL and standard IO
 #include <C:/mingw_dev_lib/SDL2/include/SDL2/SDL.h>
 #include <stdio.h>
+#include <iostream>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
+
+SDL_Surface* gHelloWorld = NULL;
 
 int main( int argc, char* args[] )
 {
@@ -17,12 +20,12 @@ int main( int argc, char* args[] )
 	//The surface contained by the window
 	SDL_Surface* screenSurface = NULL;
 
-	SDL_Surface* gHelloWorld = NULL;
-
 	//Initialize SDL
 	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 	{
 		printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+		std::cout << "SDL could not initialize!" << std::endl;
+		SDL_Delay(5000);
 	}
 	else
 	{
@@ -31,6 +34,7 @@ int main( int argc, char* args[] )
 		if( window == NULL )
 		{
 			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+			SDL_Delay(5000);
 		}
 		else
 		{
@@ -43,8 +47,10 @@ int main( int argc, char* args[] )
 			//Update the surface
 			SDL_UpdateWindowSurface( window );
 
+			loadMedia();
+
 			//Wait two seconds
-			SDL_Delay( 2000 );
+			SDL_Delay( 5000 );
 		}
 	}
 
@@ -55,4 +61,25 @@ int main( int argc, char* args[] )
 	SDL_Quit();
 
 	return 0;
+}
+
+bool loadMedia()
+{	
+	bool success = true;
+	gHelloWorld = SDL_LoadBMP("02_getting image on screen");
+	if (gHelloWorld == NULL)
+	{
+		printf("unable to load image");
+	}
+	return success;
+}
+
+bool init() 
+{
+	bool success = true;
+
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+
+	}
 }

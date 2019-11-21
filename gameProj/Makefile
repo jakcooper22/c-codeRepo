@@ -1,4 +1,4 @@
-OBJS = 01_hello_SDL.cpp
+OBJS = C:\Users\jccooper\maingit\crepo\c-codeRepo\gameProj\Proj2\02_getting_an_image_on_the_screen.cpp
 OBJ_NAME = SDLMain
 
 all : $(OBJS)
